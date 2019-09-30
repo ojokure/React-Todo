@@ -3,7 +3,7 @@ import React from 'react';
 
 
 
-const todos = [
+const todoList = [
   {
     task: 'Organize Garage',
     id: 1528817077286,
@@ -23,9 +23,20 @@ class App extends React.Component {
 constructor(props){
   super(props);
   this.state = {
-   todos : todos,
+   todos : todoList,
   }
 }
+
+
+TodoList = (id, isComplete) => () => {
+  const { todos } = this.state;
+  this.setState({
+    todos: todos.map(el => {
+      if (el.id !== id) return el;
+      return { id: el.id, name: el.name, complete: isComplete };
+    })
+  });
+};
 
 
 

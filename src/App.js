@@ -1,7 +1,6 @@
 import React from "react";
-import TodoList from "./components/TodoComponents/TodoList"
-import TodoForm from "./components/TodoComponents/TodoForm"
-
+import TodoList from "./components/TodoComponents/TodoList";
+import TodoForm from "./components/TodoComponents/TodoForm";
 
 const todoList = [
   {
@@ -24,43 +23,41 @@ class App extends React.Component {
     super(props);
     this.state = {
       todos: todoList,
-      todoForm: ""
+      formTodo: ""
     };
   }
 
- 
-     handleChange = (event) => {
-     this.setState({todoForm : event.target.value})
-     }
+  handleChange = event => {
+    this.setState({ formTodo: event.target.value });
+  };
 
-     handleSubmit = e => {
-      e.preventDefault();
-      const todo = {
-        id: Date.now(),
-        task: e.target.vaue,
-        completed: false
-      };
-  
-      this.setState({
-        ...this.state,
-        todos: [...this.state.todos, todo],
-        formTodo: ''
-      })
+  handleSubmit = e => {
+    e.preventDefault();
+    const { formTodo, todos } = this.state;
+    const todo = {
+      task: formTodo, 
+      completed: false, 
+      id: Date.now()
     }
-  
-     
 
+    this.setState({
+      todos: todos.concat(todo),
+      formTodo: ""
+    });
+  };
 
   render() {
-
     return (
       <div>
+        <h2>Welcome to your Todo App!</h2>
 
-          <h2>Welcome to your Todo App!</h2>
-    
         <div className="component">
-          <TodoForm handleChange={this.handleChange}  todoForm={this.todoForm}/>
-         <TodoList  todos={this.state.todos}/> 
+          <TodoList todos={this.state.todos} />
+          <TodoForm
+            handleChange={this.handleChange}
+            formTodo={this.formTodo}
+            handleSubmit={this.handleSubmit}
+          />
         </div>
       </div>
     );

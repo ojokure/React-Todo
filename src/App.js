@@ -35,10 +35,10 @@ class App extends React.Component {
     e.preventDefault();
     const { formTodo, todos } = this.state;
     const todo = {
-      task: formTodo, 
-      completed: false, 
+      task: formTodo,
+      completed: false,
       id: Date.now()
-    }
+    };
 
     this.setState({
       todos: todos.concat(todo),
@@ -55,7 +55,7 @@ class App extends React.Component {
           <TodoList todos={this.state.todos} />
           <TodoForm
             handleChange={this.handleChange}
-            formTodo={this.formTodo}
+            formTodo={this.state.formTodo}
             handleSubmit={this.handleSubmit}
           />
         </div>

@@ -11,7 +11,7 @@ class TodoForm extends React.Component {
             value={this.props.formTodo}
             onSubmit={this.props.handleSubmit}
           />
-          <button onSubmit={this.onSubmit}> Add Todo </button>
+          <button onSubmit={this.props.handleSubmit} type="submit"> Add Todo </button>
           <button> Clear Completed </button>
         </form>
       </div>

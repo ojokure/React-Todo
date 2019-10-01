@@ -27,6 +27,20 @@ class App extends React.Component {
     };
   }
 
+  handleCompleted = id => {
+    let todos = this.state.todos.map(el => {
+      if (el.id === id) {
+        el.completed = !el.completed;
+      }
+      return el;
+    });
+
+    console.log(todos);
+    this.setState({
+      todos
+    });
+  };
+
   handleChange = event => {
     this.setState({ formTodo: event.target.value });
   };
@@ -52,7 +66,10 @@ class App extends React.Component {
         <h2>Welcome to your Todo App!</h2>
 
         <div className="component">
-          <TodoList todos={this.state.todos} />
+          <TodoList
+            todos={this.state.todos}
+            handleCompleted={this.handleCompleted}
+          />
           <TodoForm
             handleChange={this.handleChange}
             formTodo={this.state.formTodo}

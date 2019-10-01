@@ -9,9 +9,11 @@ class TodoForm extends React.Component {
             type="text"
             onChange={this.props.handleChange}
             value={this.props.formTodo}
-            onSubmit={this.props.handleSubmit}
+            onClick={this.props.handleSubmit}
           />
-          <button onSubmit={this.props.handleSubmit} type="submit"> Add Todo </button>
+          <button type="submit" onClick={this.props.handleSubmit}>
+            Add Todo
+          </button>
           <button> Clear Completed </button>
         </form>
       </div>
